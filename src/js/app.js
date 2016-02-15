@@ -35,7 +35,7 @@ app.controller('myController', function ($scope, wikiService) {
         for (i = 0; i < newArr1.length; i++) {
           for (j = 0; j < newArr1[i].length; j++) {
             if (newArr2[j] === undefined) {
-              newArr2[j] = new Array();
+              newArr2[j] = [];
             }
             newArr2[j].push(newArr1[i][j]);
           }
