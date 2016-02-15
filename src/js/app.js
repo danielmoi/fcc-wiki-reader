@@ -25,19 +25,32 @@ app.factory('wikiService', function ($http) {
 
 app.controller('myController', function ($scope, wikiService) {
 
-  var loadWiki = function (searchWord) {
+  $scope.loadWiki = function (searchWord) {
     return wikiService.getWiki(searchWord)
       .then(function (wikiResponse) {
-        echo(wikiResponse);
-        $scope.wikiResponse = wikiResponse;
+        var newArr1 = wikiResponse.data.slice(1);
+        echo(newArr1);
+        var newArr2 = [];
+        var i, j;
+        for (i = 0; i < newArr1.length; i++) {
+          for (j = 0; j < newArr1[i].length; j++) {
+            if (newArr2[j] === undefined) {
+              newArr2[j] = new Array();
+            }
+            newArr2[j].push(newArr1[i][j]);
+          }
+        }
+        echo(newArr2);
+      $scope.wikiData = newArr2;
         // no return because nothing else will be chained to this function
       });
   };
-  
-  $scope.inputString = 'Dan';
 
-  $scope.wikiResponse = null;
+  $scope.inputString = 'Sydney';
 
-  loadWiki($scope.inputString);
+  $scope.wikiData = null;
+
+
+
 
 });
