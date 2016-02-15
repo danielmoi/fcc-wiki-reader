@@ -33,9 +33,11 @@ app.controller('myController', function ($scope, wikiService) {
         // no return because nothing else will be chained to this function
       });
   };
+  
+  $scope.inputString = 'Dan';
 
   $scope.wikiResponse = null;
 
-  loadWiki('Dan');
+  loadWiki($scope.inputString);
 
 });
